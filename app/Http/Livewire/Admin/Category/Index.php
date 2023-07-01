@@ -27,7 +27,7 @@ class Index extends Component
             File::delete($path);
         }
         $category->delete();
-        session()->flash('message', 'Category Deleted');
+        session()->flash('message', 'Category Deleted Successfully');
         $this->dispatchBrowserEvent('close-modal');
     }
 

@@ -81,11 +81,11 @@
                             </div>
                             <div class="mb-3">
                                 <label>Small Description (500 Words)</label>
-                                <textarea name="small_description" class="form-control" rows="4"></textarea>
+                                <textarea name="small_description" id="ckeditor" class="form-control" rows="4"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label>Description</label>
-                                <textarea name="description" class="form-control" rows="4"></textarea>
+                                <textarea name="description" id="ckeditor1" class="form-control" rows="4"></textarea>
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="seotag-tab-pane" role="tabpanel" aria-labelledby="seotag-tab" tabindex="0">
@@ -103,6 +103,7 @@
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
+                            <label><h4>Price Product</h4></label>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="mb-3">
@@ -138,13 +139,13 @@
                         </div>
                         <div class="tab-pane fade border p-3" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
                             <div class="mb-3">
-                                <label>Upload Product Image</label>
+                                <label><h4>Upload Product Image</h4></label>
                                 <input type="file" name="image[]" multiple class="form-control mt-2">
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="color-tab-pane" role="tabpanel" aria-labelledby="color-tab" tabindex="0">
                             <div class="mb-3">
-                                <label>Select Color</label>
+                                <label><h4>Add Color Product</h4></label>
                                 <div class="row">
                                     @forelse ($colors as $coloritem)
                                     <div class="col-md-3">
@@ -154,7 +155,7 @@
 
                                             </div>
                                             <div>
-                                                Quantity: <input type="number" name="colorquantity[{{ $coloritem->id }}]" style="width: 70px; border:1px solid;">
+                                                Quantity: <input type="number" class="form-control" name="colorquantity[{{ $coloritem->id }}]">
                                             </div>
                                         </div>
                                     </div>

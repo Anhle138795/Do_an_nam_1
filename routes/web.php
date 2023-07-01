@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +24,16 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
+Route::get('/contact', [App\Http\Controllers\Frontend\FrontendController::class, 'contact']);
+Route::get('/collections', [App\Http\Controllers\Frontend\FrontendController::class, 'categories']);
+Route::get('/collections/{category_slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'products']);
+Route::get('/collections/{category_slug}/{product_slug}', [App\Http\Controllers\Frontend\FrontendController::class, 'productView']);
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/wishlist',  [App\Http\Controllers\Frontend\WishlistController::class, 'index']);
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -70,6 +81,17 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         Route::get('/colors/{color}/edit', 'edit');
         Route::put('/colors/{color_id}', 'update');
         Route::get('/colors/{color_id}/delete', 'destroy');
+    });
+
+    Route::controller(App\Http\Controllers\Admin\UserController::class)->group(function () {
+        Route::get('/users', 'index');
+        Route::get('/users/create', 'create');
+        Route::post('/users', 'store');
+        Route::get('/users/{user_id}/edit', 'edit');
+        Route::put('/users/{user_id}', 'update');
+        Route::get('/users/{user_id}/delete', 'destroy');
+
+
     });
 });
 

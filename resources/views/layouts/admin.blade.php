@@ -51,7 +51,14 @@
     <script src="{{asset('admin/js/jquery.dataTables.js')}}"></script>
     <script src="{{asset('admin/js/dataTables.bootstrap4.js')}}"></script>
     <!-- End custom js for this page-->
-    
+    <!-- CKEditor text -->
+    <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('ckeditor');
+        CKEDITOR.replace('ckeditor1');
+        CKEDITOR.replace('ckeditor2');
+        CKEDITOR.replace('ckeditor3');
+    </script>
     @yield('scripts')
 
     @livewireScripts
